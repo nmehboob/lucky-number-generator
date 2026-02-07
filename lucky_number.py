@@ -1,18 +1,22 @@
-# Lucky Number Generator
+import random
 
-A simple Python program that generates your lucky number based on your name.
+def generate_lucky_number(name):
+    """Generate a lucky number based on the name"""
+    # Use name to create a seed
+    seed_value = sum(ord(char) for char in name)
+    random.seed(seed_value)
+    
+    lucky_number = random.randint(1, 100)
+    return lucky_number
 
-## How to Run
+def main():
+    print("=== Lucky Number Generator ===")
+    user_name = input("Enter your name: ")
+    
+    lucky_num = generate_lucky_number(user_name)
+    
+    print(f"\nHello {user_name}!")
+    print(f"Your lucky number today is: {lucky_num}")
 
-1. Make sure you have Python installed
-2. Download the `lucky_number.py` file
-3. Run: `python lucky_number.py`
-4. Enter your name when asked
-
-## What it does
-
-- Takes your name as input
-- Calculates a unique lucky number (1-100)
-- Shows your lucky number
-
-Made by Mahboob
+if __name__ == "__main__":
+    main()
